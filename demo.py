@@ -30,8 +30,8 @@ def count_primes(n):
 
 def test_sum_of_elements(n):
     data = np.ones((n), dtype=np.uint16)
-    #sum = libtest.sum_of_elements(data)
-    sum = np.sum(data)
+    sum = libtest.sum_of_elements(data)
+    #sum = np.sum(data)
     return sum
 
 if __name__ == "__main__":
@@ -41,10 +41,10 @@ if __name__ == "__main__":
     for i in range(sample_size):
         start_time = time.time()
         #tmp = calc_sum_of_squares(100000000)
-        #tmp = libtest.calc_sum_of_squares(100000000)
+        tmp = libtest.calc_sum_of_squares(100000000)
 
 
-        count = libtest.count_primes(10000)
+        #count = libtest.count_primes(10000)
         #count = count_primes(10000)
         
         #out = test_sum_of_elements(100000000)

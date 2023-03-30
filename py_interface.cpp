@@ -6,7 +6,7 @@
 
 namespace py = pybind11;
 
-size_t sum_of_elements(py::array_t<uint16_t, py::array::c_style | py::array::forcecast> &array){
+size_t sum_of_elements(py::array_t<uint16_t, py::array::c_style> &array){
   size_t sum = 0;
   auto length = array.size();
   auto proxy = array.unchecked<1>();
