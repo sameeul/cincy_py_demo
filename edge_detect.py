@@ -6,10 +6,6 @@ from scipy import ndimage
 import libtest
 
 def convolve_2D(image, kernel):
-    # Cross Correlation
-    #kernel = np.flipud(np.fliplr(kernel))
-
-    # Gather Shapes of Kernel + Image + Padding
     xKernShape = kernel.shape[0]
     yKernShape = kernel.shape[1]
 
@@ -38,9 +34,15 @@ def convolve_2D(image, kernel):
 def detect_edges(image,masks):
     edges=np.zeros(image.shape)
     for mask in masks:
+        # using Python Implementation
         #edges=np.maximum(convolve_2D(image,mask), edges)
-        edges=np.maximum(ndimage.convolve(image,mask), edges)
-        #edges=np.maximum(libtest.convolution_2d(image,mask), edges)
+        
+        #using our C++ implementation
+        edges=np.maximum(libtest.convolution_2d(image,mask), edges)
+        
+        #using SciPy Convolution
+        #edges=np.maximum(ndimage.convolve(image,mask), edges)
+        
     return edges
 
 
